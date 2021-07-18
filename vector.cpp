@@ -24,13 +24,11 @@ struct stretch_buffer
     }
 
     void reallocate(size_t new_size){
-        if(new_size > 0)
-        {
-            size_t byte_size = sizeof(TType)*new_size;
-            data = (TType *) realloc(data, byte_size);
-            capacity = new_size;
-            data_end = data + new_size;
-        }
+        // NOTE(fidli): new_size is always > 0
+        size_t byte_size = sizeof(TType)*new_size;
+        data = (TType *) realloc(data, byte_size);
+        capacity = new_size;
+        data_end = data + new_size;
     }
 
     TType * begin()
