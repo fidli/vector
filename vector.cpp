@@ -69,6 +69,9 @@ struct stretch_buffer
             // NOTE(fidli): this is 1.5x grow, like msvc does
             size_t new_capacity = new_capacity = capacity + capacity/2;
             reallocate(new_capacity);
+            // TODO(fidli): benchmark/optimize this
+            *(data + count) = value;
+            return;
         }
         *target = value;
     }
